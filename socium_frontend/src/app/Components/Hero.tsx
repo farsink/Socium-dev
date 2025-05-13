@@ -1,8 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 min-h-screen bg-transparent'>
       <div className='flex flex-col justify-center items-start p-8 md:p-16'>
@@ -28,6 +30,7 @@ export default function Home() {
           <Button
             variant='default'
             size='sm'
+            onClick={() => router.push("/dashboard")}
             className='bg-indigo-600 backdrop-blur-md hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full mix-blend-darken hover:animate-pulse'
           >
             Dashboard <span className='hover:animate-pulse'>›</span>

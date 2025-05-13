@@ -1,6 +1,10 @@
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Header: React.FC = () => {
+  const router = useRouter();
   return (
     <header className='bg-transparent py-4'>
       <div className='container mx-auto flex items-center justify-between px-8 font-montserrat'>
@@ -28,14 +32,23 @@ const Header: React.FC = () => {
 
         {/* Actions */}
         <div className='flex items-center space-x-4'>
-          <a href='#' className='text-white text-sm hidden sm:block md:block hover:text-gray-300'>
+          <Link
+            href='/Auth/'
+            className='text-white text-sm hidden sm:block md:block hover:text-gray-300'
+          >
             Sign in
-          </a>
-          <button className='hidden  bg-white text-black text-sm rounded-full px-4 py-2 font-medium sm:flex items-center hover:bg-gray-100'>
-            Contact sales <span className='ml-1'>›</span>
+          </Link>
+          <button
+            onClick={() => router.push("/Auth")}
+            className='hidden  bg-white text-black text-sm rounded-full px-4 py-2 font-medium sm:flex items-center hover:bg-gray-100'
+          >
+            Sign Up <span className='ml-1'>›</span>
           </button>
-          <button className='flex sm:hidden bg-white text-black text-sm rounded-full px-4 py-2 font-medium  items-center hover:bg-gray-100'>
-           Sign in <span className='ml-1'>›</span>
+          <button
+            onClick={() => router.push("/Auth/")}
+            className='flex sm:hidden bg-white text-black text-sm rounded-full px-4 py-2 font-medium  items-center hover:bg-gray-100'
+          >
+            Sign in <span className='ml-1'>›</span>
           </button>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat , Poppins,DM_Sans } from "next/font/google";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
+import { Montserrat, Poppins, DM_Sans } from "next/font/google";
 import "./globals.css";
-
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -18,8 +19,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-
+});
 
 export const metadata: Metadata = {
   title: "Socium",
@@ -32,14 +32,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={`${montserrat.variable}`}>
-     
-
-      <body
-        className={`${montserrat.variable} ${poppins.variable} ${dm_sans.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <StackProvider app={stackServerApp}>
+      <html lang='en' className={`${montserrat.variable}`}>
+        <body
+          className={`${montserrat.variable} ${poppins.variable} ${dm_sans.variable} antialiased`}
+        >
+          <StackProvider app={stackServerApp}>
+            <StackTheme>{children}</StackTheme>
+          </StackProvider>
+        </body>
+      </html>
+    </StackProvider>
   );
 }

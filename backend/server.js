@@ -3,12 +3,11 @@ const dotenv = require('dotenv');
 const connectDB = require('./database/MongoDb');
 const User = require('./database/Schema/user');
 
-const connectRedis = require('./database/redisDb');
 dotenv.config();
 // Connect to MongoDB
 
 connectDB();
-connectRedis();
+
 
 
 // Example usage
