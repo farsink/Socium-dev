@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { handleVerificationError, VerificationError } from "../AuthControler";
 const VerifyForm: React.FC = () => {
   const Router = useRouter();
-  const [code, setcode] = useState("");
   const [error, setError] = useState<string[]>([]);
   const app = useStackApp();
   const nonce = useSearchParams().get("nonce");
@@ -45,7 +44,7 @@ const VerifyForm: React.FC = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const code = formData.get("password") as string;
-    setcode(code);
+    
     try {
       const MagicCode = code + nonce;
       console.log(MagicCode);

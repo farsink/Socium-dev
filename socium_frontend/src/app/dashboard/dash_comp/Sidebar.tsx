@@ -10,7 +10,6 @@ import {
   ChevronRight,
   Triangle,
 } from "lucide-react";
-import { on } from "events";
 import { usePathname, useRouter } from "next/navigation";
 
 interface SidebarProps {

@@ -9,7 +9,7 @@ const ComponentName: React.FC = () => {
     if (user) {
       window.location.href = "/dashboard";
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className='relative min-h-screen flex items-center justify-center bg-black overflow-hidden'>

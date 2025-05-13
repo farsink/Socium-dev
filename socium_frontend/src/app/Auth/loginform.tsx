@@ -45,15 +45,18 @@ const Loginform = () => {
       } else {
         console.log(result);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setissent("nill");
       console.log(err);
       // Check for backend error code
+      // @ts-expect-error: code might exist on error
       if (err?.code === "USER_EMAIL_ALREADY_EXISTS") {
         seterror([
           "A user with this email already exists. Please sign in instead.",
         ]);
+        // @ts-expect-error: code might exist on error
       } else if (err?.message) {
+        // @ts-expect-error: code might exist on error
         seterror([err.message]);
       } else {
         seterror(["An unexpected error occurred."]);
@@ -147,7 +150,11 @@ const Loginform = () => {
             </button>
           </div>
           <div className='button-log'>
-            <button title='Sign in with Facebook' type="button" onClick={handleFacebookLogin}>
+            <button
+              title='Sign in with Facebook'
+              type='button'
+              onClick={handleFacebookLogin}
+            >
               <svg
                 xmlnsXlink='http://www.w3.org/1999/xlink'
                 xmlns='http://www.w3.org/2000/svg'
